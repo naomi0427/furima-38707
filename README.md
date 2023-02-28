@@ -1,4 +1,5 @@
-# usersテーブル
+
+## usersテーブル
 
 | Column             | Type   | Options                        |
 | ------------------ | ------ | ------------------------------ |
@@ -10,3 +11,6 @@
 | last_name_kana     | string | null: false                    |
 | first_name_kana    | string | null: false                    |
 | birthday           | date   | null: false                    |
+
+### Association
+
