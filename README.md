@@ -31,7 +31,7 @@
 | from_prefecture_id | integer    | null: false                    |
 | schedule_day_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| seller_user        | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -55,7 +55,7 @@
 
 
 
-## send_address テーブル
+## send_addresses テーブル
 
 | Column             | Type      | Options                        |
 | ------------------ | --------- | ------------------------------ |
