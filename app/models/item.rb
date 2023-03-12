@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+  has_one_attached :image
+
+  
   validates :items_name,         presence: true
   validates :explain,            presence: true
   validates :category_id,        presence: true
