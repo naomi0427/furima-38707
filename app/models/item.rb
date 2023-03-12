@@ -9,5 +9,9 @@ class Item < ApplicationRecord
   validates :price,              presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category, :condition, :tax, :from_prefecture, :schedule_day,
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :tax
+  belongs_to :from_prefecture
+  belongs_to :schedule_day
 end
