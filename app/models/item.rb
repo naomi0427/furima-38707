@@ -1,14 +1,9 @@
 class Item < ApplicationRecord
   has_one_attached :image
 
-  
+
   validates :items_name,         presence: true
   validates :explain,            presence: true
-  validates :category_id,        presence: true
-  validates :condition_id,       presence: true
-  validates :tax_id,             presence: true
-  validates :from_prefecture_id, presence: true
-  validates :schedule_day_id,    presence: true
   validates :price,              presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -17,4 +12,6 @@ class Item < ApplicationRecord
   belongs_to :tax
   belongs_to :from_prefecture
   belongs_to :schedule_day
+
+  validates :category_id, :condition_id, :tax_id, :from_prefecture_id, :schedule_day_id, numericality: { other_than: 1 }
 end
