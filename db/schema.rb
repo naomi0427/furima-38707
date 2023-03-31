@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_31_144932) do
+ActiveRecord::Schema.define(version: 2023_03_31_151504) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -57,6 +57,19 @@ ActiveRecord::Schema.define(version: 2023_03_31_144932) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "send_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "post_code", null: false
+    t.integer "from_prefecture_id", null: false
+    t.string "to_city", null: false
+    t.string "to_house_number", null: false
+    t.string "to_building_name"
+    t.string "to_telephone_number", null: false
+    t.bigint "after_sale_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["after_sale_id"], name: "index_send_addresses_on_after_sale_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -79,4 +92,5 @@ ActiveRecord::Schema.define(version: 2023_03_31_144932) do
   add_foreign_key "after_sales", "items"
   add_foreign_key "after_sales", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "send_addresses", "after_sales"
 end
