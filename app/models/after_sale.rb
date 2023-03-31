@@ -1,0 +1,2 @@
+class AfterSale < ApplicationRecord
+end
