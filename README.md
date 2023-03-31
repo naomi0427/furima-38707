@@ -71,4 +71,3 @@
 ### Association
 
 - belongs_to :after_sale
-
