@@ -1,11 +1,12 @@
 class OrdersController < ApplicationController
-
+  before_action :authenticate_user!, only: :index
   def index
-    @order = Order.new
+    #@order = Order.new
   end
 
   def create
-    @order = Order.new(order_params)
+    binding.pry
+    #@order = Order.new(order_params)
   end
 
 
