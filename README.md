@@ -60,7 +60,7 @@
 | Column             | Type      | Options                        |
 | ------------------ | --------- | ------------------------------ |
 | post_code          |string     | null: false                    |      
-| from_prefecture_id | integer    | null: false                    |
+| from_prefecture_id | integer   | null: false                    |
 | to_city            |string     | null: false                    |
 | to_house_number    |string     | null: false                    |
 | to_building_name   |string     |                                |
