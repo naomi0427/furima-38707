@@ -63,6 +63,12 @@ RSpec.describe Order, type: :model do
         @after_sales.valid?
         expect(@after_sales.errors.full_messages).to include("To telephone number is invalid")
       end
+
+      it "tokenが空では登録できない" do
+        @after_sales.token = nil
+        @after_sales.valid?
+        expect(@after_sales.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
