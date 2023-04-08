@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    unless @item.user == current_user
+    if @item.after_sale
       redirect_to root_path
     end
   end
