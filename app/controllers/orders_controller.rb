@@ -1,14 +1,15 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: :index
   before_action :set_item, only: [:index, :create]
+  before_action :send_item, only: [:index, :create]
 
   def index
     @order = Order.new
   end
 
-  def new
-    @order = Order.new
-  end
+  #def new
+  #  @order = Order.new
+  #end
 
   def create
     @order = Order.new(after_sale_params)
@@ -39,5 +40,10 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
-  #if current_user.id == @item.user_id or @item.after_sale.present?
+
+  def send_item
+    if current_user.id == @item.user_id or @item.after_sale.present?
+      redirect_to  root_path
+    end
+  end
 end
