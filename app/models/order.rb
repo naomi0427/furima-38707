@@ -12,9 +12,6 @@ class Order
     validates :token
 
   end
-
-  validates :from_prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
-
   def save
     # 各テーブルにデータを保存する処理を書く
     after_sale = AfterSale.create(item_id: item_id, user_id: user_id)
