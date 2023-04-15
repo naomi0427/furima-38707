@@ -13,19 +13,30 @@ RSpec.describe Order, type: :model do
         expect(@after_sales).to  be_valid
       end
       it "建物名が空の時も購入ができる" do
-        @after_sales.to_building_name = 'a'
+        @after_sales.to_building_name = ' '
         expect(@after_sales).to be_valid
       end
     end
 
     context "購入できない時" do
+      it "購入者が空では登録できない" do
+        @after_sales.user_id = ''
+        @after_sales.valid?
+        expect(@after_sales.errors.full_messages).to include("User can't be blank")
+      end
+      it "購入商品が空では登録できない" do
+        @after_sales.item_id = nil
+        @after_sales.valid?
+        expect(@after_sales.errors.full_messages).to include("Item can't be blank")
+      end
+
       it "郵便番号が空では登録できない" do
         @after_sales.post_code = ''
         @after_sales.valid?
         expect(@after_sales.errors.full_messages).to include("Post code can't be blank")
       end
       it "郵便番号が正しい形じゃないと登録できない" do
-        @after_sales.post_code = '１２３-４５６７'
+        @after_sales.post_code = '1234567'
         @after_sales.valid?
         expect(@after_sales.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
       end
@@ -60,6 +71,16 @@ RSpec.describe Order, type: :model do
       end
       it "電話番号が正しい形じゃないと登録できない" do
         @after_sales.to_telephone_number = '０９０１２３４５６７８'
+        @after_sales.valid?
+        expect(@after_sales.errors.full_messages).to include("To telephone number is invalid")
+      end
+      it "電話番号が9桁だと登録できない" do
+        @after_sales.to_telephone_number = '123456789'
+        @after_sales.valid?
+        expect(@after_sales.errors.full_messages).to include("To telephone number is invalid")
+      end
+      it "電話番号が12桁だと登録できない" do
+        @after_sales.to_telephone_number = '123456789012'
         @after_sales.valid?
         expect(@after_sales.errors.full_messages).to include("To telephone number is invalid")
       end

@@ -13,7 +13,7 @@ class Order
 
   end
 
-  validates :from_prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
+  validates :from_prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
 
   def save
     # 各テーブルにデータを保存する処理を書く
